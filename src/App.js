@@ -25,11 +25,11 @@ const [todos, setTodos] = useState([
    function removeTodo (id){
     setTodos(todos.filter(element => element.id !== id))
    }
-   function AddTodo(title){
+   function addTodo(title){
     setTodos(todos.concat([{
       title,
       id: Date.now(),
-      completed: false,
+      completed: false
     }]))
    }
 
@@ -37,7 +37,7 @@ const [todos, setTodos] = useState([
     <Context.Provider value={{removeTodo}}>
     <div className="wrapper">
   <h1>Записки подкаблучника</h1>
-  <AddTodo onCreate={AddTodo}/>
+  <AddTodo onCreate={addTodo}/>
    {(todos.length) ? <Todolist todos = {todos} onToggle = {toggleTodo}/> : <p>Ну вот  и закончились твои мучения дорогой. Порадуйся. Купи пивка.</p>} 
     </div>
     </Context.Provider>

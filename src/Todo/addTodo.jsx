@@ -1,19 +1,20 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-const AddTodo = (onCreate) => {
+const AddTodo = (props) => {
 
     const [value, setValue] = useState('')
-    const SubmitHandler = (e) => {
-        e.preventDefault()
+    const submitHandler = (event) => {
+        event.preventDefault()
         if(value.trim()){
-            onCreate(value)
+            props.onCreate(value)
+            setValue('')
         }
     }
 
     return(
-        <form style = {{marginBottom: '1rem'}} onSubmit = {SubmitHandler}>
-            <input onChange={e => setValue(e.target.value)} value = {value}/>
+        <form style = {{marginBottom: '1rem'}} onSubmit = {submitHandler}>
+            <input onChange={event => setValue(event.target.value)} value = {value}/>
             <button type = 'submit'>Создать запись</button>
         </form>
     )
